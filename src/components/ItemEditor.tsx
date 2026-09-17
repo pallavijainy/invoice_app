@@ -52,7 +52,6 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
       setValue("discountPct", item.discountPct);
       setDescriptionLength(item.description?.length || 0);
 
-      // Load item picture if available
       if (item.itemID > 0) {
         loadItemPicture(item.itemID);
       }
@@ -154,15 +153,12 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
 
   return (
     <>
-      {/* Modal Backdrop */}
       <div
         className="fixed inset-0 bg-black/50 z-40"
         onClick={handleClose}
       />
 
-      {/* Modal */}
       <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-lg shadow-lg z-50 max-h-[90vh] overflow-y-auto">
-        {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white">
           <h2 className="text-xl font-semibold text-gray-800">
             {item?.itemID ? "Edit Item" : "New Item"}
@@ -176,15 +172,12 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
           </button>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
-          {/* Image Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-3">
               Item Picture
             </label>
             <div className="flex gap-4">
-              {/* Preview */}
               <div className="w-[100px] h-[100px] rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden bg-gray-50 flex-shrink-0">
                 {imagePreview ? (
                   <img
@@ -197,7 +190,6 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
                 )}
               </div>
 
-              {/* File Input */}
               <div className="flex-1">
                 <input
                   type="file"
@@ -213,7 +205,6 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
             </div>
           </div>
 
-          {/* Item Name */}
           <div>
             <label
               htmlFor="itemName"
@@ -238,7 +229,6 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
             )}
           </div>
 
-          {/* Description */}
           <div>
             <label
               htmlFor="description"
@@ -268,7 +258,6 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
             </div>
           </div>
 
-          {/* Sale Rate & Discount */}
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label
@@ -321,14 +310,12 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
             </div>
           </div>
 
-          {/* Server Error */}
           {serverError && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-md">
               <p className="text-sm text-red-600">{serverError}</p>
             </div>
           )}
 
-          {/* Actions */}
           <div className="border-t border-gray-200 pt-4 flex gap-3 justify-end">
             <button
               type="button"

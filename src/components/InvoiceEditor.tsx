@@ -206,9 +206,7 @@ const InvoiceEditor = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      {/* Modal */}
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg my-8">
-        {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white">
           <h2 className="text-xl font-semibold text-gray-800">
             {invoice?.invoiceID ? "Edit Invoice" : "New Invoice"}
@@ -222,9 +220,7 @@ const InvoiceEditor = ({
           </button>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
-          {/* Invoice Details */}
           <section>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
               Invoice Details
@@ -360,7 +356,6 @@ const InvoiceEditor = ({
             </div>
           </section>
 
-          {/* Line Items */}
           <section>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Line Items</h3>
@@ -376,7 +371,6 @@ const InvoiceEditor = ({
               </div>
             </div>
 
-            {/* Line Items Table */}
             <div className="overflow-x-auto border border-gray-200 rounded-lg">
               <table className="w-full">
                 <thead>
@@ -525,10 +519,8 @@ const InvoiceEditor = ({
             )}
           </section>
 
-          {/* Totals Section */}
           <section className="border-t border-gray-200 pt-6">
             <div className="flex justify-end max-w-xs ml-auto space-y-3">
-              {/* Sub Total */}
               <div className="flex justify-between w-full">
                 <span className="text-sm text-gray-600">Sub Total:</span>
                 <span className="text-sm font-medium text-gray-900">
@@ -536,7 +528,6 @@ const InvoiceEditor = ({
                 </span>
               </div>
 
-              {/* Tax */}
               <div className="flex justify-between gap-3 items-center w-full">
                 <span className="text-sm text-gray-600">Tax:</span>
                 <div className="flex gap-2">
@@ -565,7 +556,6 @@ const InvoiceEditor = ({
                 </div>
               </div>
 
-              {/* Invoice Amount */}
               <div className="flex justify-between w-full border-t border-gray-200 pt-3 font-semibold">
                 <span className="text-base text-gray-900">Invoice Amount:</span>
                 <span className="text-lg text-gray-900">
@@ -575,14 +565,12 @@ const InvoiceEditor = ({
             </div>
           </section>
 
-          {/* Error Message */}
           {serverError && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-md">
               <p className="text-sm text-red-600">{serverError}</p>
             </div>
           )}
 
-          {/* Actions */}
           <div className="border-t border-gray-200 pt-4 flex gap-3 justify-end">
             <button
               type="button"

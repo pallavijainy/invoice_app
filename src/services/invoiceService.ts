@@ -63,9 +63,6 @@ export interface TopItem {
 }
 
 export const invoiceService = {
-  /**
-   * Get list of invoices with filters
-   */
   async getList(
     pageNumber: number = 1,
     pageSize: number = 10,
@@ -88,7 +85,6 @@ export const invoiceService = {
 
     const response = await axiosInstance.get("/invoice/getlist", { params });
     
-    // Handle different response structures
     const data = response.data;
     if (data.data && Array.isArray(data.data)) {
       return {
@@ -111,9 +107,7 @@ export const invoiceService = {
     return data;
   },
 
-  /**
-   * Get invoice metrics for date range
-   */
+
   async getMetrics(fromDate?: string, toDate?: string) {
     const params: Record<string, any> = {};
     if (fromDate) params.fromDate = fromDate;
@@ -123,13 +117,9 @@ export const invoiceService = {
     return response.data;
   },
 
-  /**
-   * Get 12-month trend data
-   */
   async getTrend12m() {
     const response = await axiosInstance.get("/invoice/gettrend12m");
-    
-    // Handle different response structures
+
     const data = response.data;
     if (Array.isArray(data)) {
       return data;
@@ -141,9 +131,6 @@ export const invoiceService = {
     return data || [];
   },
 
-  /**
-   * Get top items
-   */
   async getTopItems(topN: number = 5, fromDate?: string, toDate?: string) {
     const params: Record<string, any> = { topN };
     if (fromDate) params.fromDate = fromDate;
@@ -151,7 +138,6 @@ export const invoiceService = {
 
     const response = await axiosInstance.get("/invoice/topitems", { params });
     
-    // Handle different response structures
     const data = response.data;
     if (Array.isArray(data)) {
       return data;
@@ -163,9 +149,6 @@ export const invoiceService = {
     return data || [];
   },
 
-  /**
-   * Insert or update invoice
-   */
   async insertUpdate(
     invoiceID: number,
     invoiceNo: string,
@@ -205,9 +188,6 @@ export const invoiceService = {
     return data;
   },
 
-  /**
-   * Delete invoice
-   */
   async delete(invoiceID: number) {
     const response = await axiosInstance.post("/invoice/delete", {
       invoiceID,
@@ -215,9 +195,6 @@ export const invoiceService = {
     return response.data;
   },
 
-  /**
-   * Get invoice by ID
-   */
   async getByID(invoiceID: number) {
     const response = await axiosInstance.get("/invoice/getbyid", {
       params: { invoiceID },

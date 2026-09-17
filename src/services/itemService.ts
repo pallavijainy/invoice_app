@@ -26,9 +26,6 @@ export interface ItemLookupItem {
 }
 
 export const itemService = {
-  /**
-   * Get list of items with pagination
-   */
   async getList(
     pageNumber: number = 1,
     pageSize: number = 10,
@@ -49,7 +46,6 @@ export const itemService = {
       params,
     });
     
-    // Handle different response structures
     const data = response.data;
     if (data.data && Array.isArray(data.data)) {
       return {
@@ -72,13 +68,9 @@ export const itemService = {
     return data;
   },
 
-  /**
-   * Get lookup list for item selection in invoices
-   */
   async getLookupList() {
     const response = await axiosInstance.get("/item/getlookuplist");
     
-    // Handle different response structures
     const data = response.data;
     if (Array.isArray(data)) {
       return data;
@@ -90,9 +82,7 @@ export const itemService = {
     return data || [];
   },
 
-  /**
-   * Insert or update an item
-   */
+
   async insertUpdate(
     itemID: number,
     itemName: string,
@@ -125,9 +115,6 @@ export const itemService = {
     return response.data;
   },
 
-  /**
-   * Delete an item
-   */
   async delete(itemID: number) {
     const response = await axiosInstance.post("/item/delete", {
       itemID,
@@ -135,9 +122,6 @@ export const itemService = {
     return response.data;
   },
 
-  /**
-   * Get item picture
-   */
   async getPicture(itemID: number) {
     const response = await axiosInstance.get(`/item/picture`, {
       params: { itemID },
@@ -146,9 +130,6 @@ export const itemService = {
     return response.data;
   },
 
-  /**
-   * Get item picture thumbnail
-   */
   async getPictureThumbnail(itemID: number) {
     const response = await axiosInstance.get(`/item/pictureThumbnail`, {
       params: { itemID },
@@ -157,9 +138,6 @@ export const itemService = {
     return response.data;
   },
 
-  /**
-   * Upload item picture
-   */
   async uploadPicture(itemID: number, pictureFile: File) {
     const formData = new FormData();
     formData.append("itemID", itemID.toString());
