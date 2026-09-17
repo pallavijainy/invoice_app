@@ -25,14 +25,12 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   });
 
   useEffect(() => {
-    // Check authentication
     const token = getToken();
     const logoutParam = new URLSearchParams(window.location.search).get(
       "logout"
     );
 
     if (logoutParam === "true") {
-      // Clear token and redirect
       removeToken();
       window.location.href = "/login";
       return;
@@ -43,7 +41,6 @@ const AppLayout = ({ children }: AppLayoutProps) => {
       return;
     }
 
-    // Decode JWT to get user info
     try {
       const payload = JSON.parse(atob(token.split(".")[1]));
       setUserInfo({
@@ -75,18 +72,13 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
       <Sidebar companyName={userInfo.companyName} />
-
-      {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
         <Header
           userEmail={userInfo.email}
           companyName={userInfo.companyName}
         />
 
-        {/* Page Content */}
         <main className="flex-1 overflow-auto">
           <div className="p-6">{children}</div>
         </main>

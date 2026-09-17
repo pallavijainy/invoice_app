@@ -53,7 +53,6 @@ const Sidebar = ({ companyName = "Company" }: SidebarProps) => {
 
   return (
     <>
-      {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="md:hidden fixed top-4 left-4 z-40 p-2 bg-gray-700 text-white rounded-md"
@@ -62,9 +61,7 @@ const Sidebar = ({ companyName = "Company" }: SidebarProps) => {
         {isOpen ? <Close /> : <Menu />}
       </button>
 
-      {/* Desktop Sidebar */}
       <aside className="hidden md:flex flex-col w-64 bg-white border-r border-gray-200 h-screen sticky top-0">
-        {/* Logo Section */}
         <div className="h-16 flex items-center justify-center border-b border-gray-200">
           <div className="flex items-center gap-2 text-lg font-semibold text-gray-800">
             <span className="text-2xl">▤</span>
@@ -72,12 +69,10 @@ const Sidebar = ({ companyName = "Company" }: SidebarProps) => {
           </div>
         </div>
 
-        {/* Navigation */}
         <nav className="flex-1 px-3 py-6 space-y-2 overflow-y-auto">
           <NavLinks />
         </nav>
 
-        {/* Logout Button */}
         <div className="border-t border-gray-200 p-3">
           <Link
             href="/login?logout=true"
@@ -89,7 +84,6 @@ const Sidebar = ({ companyName = "Company" }: SidebarProps) => {
         </div>
       </aside>
 
-      {/* Mobile Drawer */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-30 md:hidden"
@@ -102,7 +96,6 @@ const Sidebar = ({ companyName = "Company" }: SidebarProps) => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Logo Section */}
         <div className="h-16 flex items-center justify-center border-b border-gray-200">
           <div className="flex items-center gap-2 text-lg font-semibold text-gray-800">
             <span className="text-2xl">▤</span>
@@ -110,12 +103,10 @@ const Sidebar = ({ companyName = "Company" }: SidebarProps) => {
           </div>
         </div>
 
-        {/* Navigation */}
         <nav className="flex-1 px-3 py-6 space-y-2 overflow-y-auto">
           <NavLinks />
         </nav>
 
-        {/* Logout Button */}
         <div className="border-t border-gray-200 p-3">
           <Link
             href="/login?logout=true"

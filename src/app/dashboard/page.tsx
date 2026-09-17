@@ -8,7 +8,6 @@ const DashboardPage = () => {
   return (
     <AppLayout>
       <div className="space-y-8">
-        {/* Welcome Section */}
         <section className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
           <h2 className="text-2xl font-semibold text-gray-800 mb-2">
             Welcome to InvoiceApp
@@ -18,7 +17,6 @@ const DashboardPage = () => {
           </p>
         </section>
 
-        {/* Company Information Section */}
         <section className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">
             Company Information
@@ -37,13 +35,11 @@ const DashboardPage = () => {
           </div>
         </section>
 
-        {/* Quick Navigation Cards */}
         <section>
           <h3 className="text-lg font-semibold text-gray-800 mb-4">
             Quick Navigation
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Items Card */}
             <Link href="/items">
               <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer h-full">
                 <div className="flex items-start justify-between mb-4">
@@ -64,7 +60,6 @@ const DashboardPage = () => {
               </div>
             </Link>
 
-            {/* Invoices Card */}
             <Link href="/invoices">
               <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer h-full">
                 <div className="flex items-start justify-between mb-4">

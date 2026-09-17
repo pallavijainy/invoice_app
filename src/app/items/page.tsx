@@ -54,7 +54,6 @@ const ItemsPage = () => {
         sortOrder
       );
       
-      // Ensure items is always an array
       const itemsArray = response?.items || response || [];
       const totalCountValue = response?.totalCount || itemsArray.length || 0;
       
@@ -74,7 +73,7 @@ const ItemsPage = () => {
   };
 
   useEffect(() => {
-    setPageNumber(1); // Reset to first page when search changes
+    setPageNumber(1); 
   }, [searchTerm]);
 
   useEffect(() => {
@@ -124,7 +123,6 @@ const ItemsPage = () => {
       return;
     }
 
-    // Prepare CSV headers
     const headers = [];
     if (visibleColumns.picture) headers.push("Picture");
     if (visibleColumns.itemName) headers.push("Item Name");
@@ -132,24 +130,21 @@ const ItemsPage = () => {
     if (visibleColumns.saleRate) headers.push("Sale Rate");
     if (visibleColumns.discountPct) headers.push("Discount %");
 
-    // Prepare CSV rows
     const rows = items.map((item) => {
       const row = [];
       if (visibleColumns.picture) row.push(""); // Skip picture
       if (visibleColumns.itemName) row.push(item.itemName);
       if (visibleColumns.description) row.push(item.description || "");
-      if (visibleColumns.saleRate) row.push(item.saleRate);
+      if (visibleColumns.saleRate) row.push(item.salesRate);
       if (visibleColumns.discountPct) row.push(item.discountPct);
       return row;
     });
 
-    // Create CSV content
     const csvContent = [
       headers.join(","),
       ...rows.map((row) => row.join(",")),
     ].join("\n");
 
-    // Download CSV
     const blob = new Blob([csvContent], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -160,7 +155,7 @@ const ItemsPage = () => {
   };
 
   const toggleColumn = (column: keyof typeof visibleColumns) => {
-    if (column === "actions") return; // Actions column always visible
+    if (column === "actions") return; 
     setVisibleColumns((prev) => ({
       ...prev,
       [column]: !prev[column],
@@ -172,7 +167,6 @@ const ItemsPage = () => {
   return (
     <AppLayout>
       <div className="space-y-6">
-        {/* Header Section */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-semibold text-gray-800">Items</h2>
@@ -205,7 +199,6 @@ const ItemsPage = () => {
           </div>
         </div>
 
-        {/* Column Chooser */}
         {showColumnChooser && (
           <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
             <p className="text-sm font-medium text-gray-800 mb-3">
@@ -240,7 +233,6 @@ const ItemsPage = () => {
           </div>
         )}
 
-        {/* Search & Sort */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-3">
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -288,14 +280,12 @@ const ItemsPage = () => {
           </div>
         </div>
 
-        {/* Error Message */}
         {error && (
           <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
             <p className="text-sm text-red-600">{error}</p>
           </div>
         )}
 
-        {/* Items Table/Loading */}
         <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
           {isLoading ? (
             <div className="p-12 text-center">
@@ -314,7 +304,6 @@ const ItemsPage = () => {
             </div>
           ) : (
             <>
-              {/* Desktop Table */}
               <div className="hidden md:block overflow-x-auto">
                 <table className="w-full">
                   <thead>
@@ -381,7 +370,7 @@ const ItemsPage = () => {
                         {visibleColumns.saleRate && (
                           <td className="px-4 py-3 text-right">
                             <p className="text-sm font-medium text-gray-900">
-                              ${item.saleRate.toFixed(2)}
+                              ${item.salesRate.toFixed(2)}
                             </p>
                           </td>
                         )}
@@ -424,7 +413,6 @@ const ItemsPage = () => {
                 </table>
               </div>
 
-              {/* Mobile Cards */}
               <div className="md:hidden p-4 space-y-4">
                 {items.map((item) => (
                   <div
@@ -453,7 +441,7 @@ const ItemsPage = () => {
                             <div>
                               <p className="text-xs text-gray-600">Sale Rate</p>
                               <p className="font-medium text-gray-900">
-                                ${item.saleRate.toFixed(2)}
+                                ${item.salesRate.toFixed(2)}
                               </p>
                             </div>
                           )}
@@ -490,7 +478,6 @@ const ItemsPage = () => {
             </>
           )}
 
-          {/* Pagination */}
           {!isLoading && items.length > 0 && (
             <div className="border-t border-gray-200 px-4 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -536,7 +523,6 @@ const ItemsPage = () => {
         </div>
       </div>
 
-      {/* Item Editor Modal */}
       <ItemEditor
         isOpen={isEditorOpen}
         item={selectedItem}
@@ -549,7 +535,6 @@ const ItemsPage = () => {
         }}
       />
 
-      {/* Delete Confirmation Dialog */}
       {confirmDelete.isOpen && (
         <>
           <div

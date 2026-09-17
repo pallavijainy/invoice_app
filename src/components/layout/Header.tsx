@@ -26,10 +26,8 @@ const Header = ({ userEmail = "User", companyName = "Company" }: HeaderProps) =>
 
   return (
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 sticky top-0 z-20">
-      {/* Left: Page Title */}
       <h1 className="text-lg font-semibold text-gray-800">{pageTitle}</h1>
 
-      {/* Right: User Info */}
       <div className="flex items-center gap-4">
         <div className="hidden sm:block text-right">
           <p className="text-sm font-medium text-gray-800">{userEmail}</p>

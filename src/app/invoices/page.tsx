@@ -51,7 +51,6 @@ const InvoicesPage = () => {
     invoiceNo?: string;
   }>({ isOpen: false });
 
-  // Get date range based on filter
   const getDateRange = () => {
     const today = new Date();
     let fromDate = "";
@@ -88,7 +87,6 @@ const InvoicesPage = () => {
     return { fromDate, toDate };
   };
 
-  // Load invoices
   const loadInvoices = async () => {
     setIsLoading(true);
     setError("");
@@ -102,7 +100,6 @@ const InvoicesPage = () => {
         searchTerm || undefined
       );
       
-      // Ensure invoices is always an array
       const invoicesArray = response?.invoices || response || [];
       const totalCountValue = response?.totalCount || invoicesArray.length || 0;
       
@@ -186,7 +183,6 @@ const InvoicesPage = () => {
       return;
     }
 
-    // Prepare CSV headers
     const headers = [];
     if (visibleColumns.invoiceNo) headers.push("Invoice No");
     if (visibleColumns.invoiceDate) headers.push("Invoice Date");
@@ -197,7 +193,6 @@ const InvoicesPage = () => {
     if (visibleColumns.taxAmount) headers.push("Tax Amount");
     if (visibleColumns.invoiceAmount) headers.push("Invoice Amount");
 
-    // Prepare CSV rows
     const rows = invoices.map((invoice) => {
       const row = [];
       if (visibleColumns.invoiceNo) row.push(invoice.invoiceNo);
@@ -211,13 +206,11 @@ const InvoicesPage = () => {
       return row;
     });
 
-    // Create CSV content
     const csvContent = [
       headers.join(","),
       ...rows.map((row) => row.join(",")),
     ].join("\n");
 
-    // Download CSV
     const blob = new Blob([csvContent], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -242,7 +235,6 @@ const InvoicesPage = () => {
   return (
     <AppLayout>
       <div className="space-y-6">
-        {/* Header Section */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-semibold text-gray-800">Invoices</h2>
@@ -275,7 +267,6 @@ const InvoicesPage = () => {
           </div>
         </div>
 
-        {/* Column Chooser */}
         {showColumnChooser && (
           <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
             <p className="text-sm font-medium text-gray-800 mb-3">
@@ -315,7 +306,6 @@ const InvoicesPage = () => {
           </div>
         )}
 
-        {/* Search & Filters */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-3">
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -379,14 +369,12 @@ const InvoicesPage = () => {
           )}
         </div>
 
-        {/* Error Message */}
         {error && (
           <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
             <p className="text-sm text-red-600">{error}</p>
           </div>
         )}
 
-        {/* Invoices Table/Loading */}
         <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
           {isLoading ? (
             <div className="p-12 text-center">
@@ -407,7 +395,6 @@ const InvoicesPage = () => {
             </div>
           ) : (
             <>
-              {/* Desktop Table */}
               <div className="hidden md:block overflow-x-auto">
                 <table className="w-full">
                   <thead>
@@ -572,7 +559,6 @@ const InvoicesPage = () => {
                 </table>
               </div>
 
-              {/* Mobile Cards */}
               <div className="md:hidden p-4 space-y-4">
                 {invoices.map((invoice) => (
                   <div
@@ -648,7 +634,6 @@ const InvoicesPage = () => {
             </>
           )}
 
-          {/* Pagination */}
           {!isLoading && invoices.length > 0 && (
             <div className="border-t border-gray-200 px-4 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -692,7 +677,6 @@ const InvoicesPage = () => {
         </div>
       </div>
 
-      {/* Invoice Editor Modal */}
       {isEditorOpen && (
         <InvoiceEditor
           invoice={selectedInvoice}
@@ -707,7 +691,6 @@ const InvoicesPage = () => {
         />
       )}
 
-      {/* Delete Confirmation Dialog */}
       {confirmDelete.isOpen && (
         <>
           <div
