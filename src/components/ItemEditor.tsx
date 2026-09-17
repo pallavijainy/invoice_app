@@ -48,12 +48,12 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
     if (isOpen && item) {
       setValue("itemName", item.itemName);
       setValue("description", item.description || "");
-      setValue("saleRate", item.saleRate);
-      setValue("discountPct", item.discountPct);
+      setValue("saleRate", item.salesRate || 0);
+      setValue("discountPct", item.discountPct || 0);
       setDescriptionLength(item.description?.length || 0);
 
       // Load item picture if available
-      if (item.itemID > 0) {
+      if (item.itemID && item.itemID > 0) {
         loadItemPicture(item.itemID);
       }
     } else {
@@ -66,9 +66,11 @@ const ItemEditor = ({ isOpen, item, onClose, onSuccess }: ItemEditorProps) => {
 
   const loadItemPicture = async (itemID: number) => {
     try {
-      const blob = await itemService.getPictureThumbnail(itemID);
-      const url = URL.createObjectURL(blob);
-      setImagePreview(url);
+      const url = await itemService.getPictureThumbnail(itemID);
+      // URL is returned directly from API
+      if (typeof url === 'string') {
+        setImagePreview(url);
+      }
     } catch (error) {
       console.error("Error loading item picture:", error);
     }

@@ -1,15 +1,16 @@
 import axiosInstance from "./api";
 
 export interface InvoiceLine {
+  rowNo?: number;
   itemID: number;
-  desc: string;
-  qty: number;
+  description: string;
+  quantity: number;
   rate: number;
-  disc: number;
-  amount?: number;
+  discountPct: number;
 }
 
 export interface Invoice {
+  primaryKeyID?: number;
   invoiceID: number;
   invoiceNo: string;
   invoiceDate: string;
@@ -26,22 +27,16 @@ export interface Invoice {
 }
 
 export interface InvoiceListItem {
+  primaryKeyID?: number;
   invoiceID: number;
   invoiceNo: string;
   invoiceDate: string;
   customerName: string;
-  itemsCount: number;
+  itemsCount?: number;
   subTotal: number;
   taxPercentage: number;
   taxAmount: number;
   invoiceAmount: number;
-}
-
-export interface InvoiceListResponse {
-  invoices: InvoiceListItem[];
-  totalCount: number;
-  pageNumber: number;
-  pageSize: number;
 }
 
 export interface InvoiceMetrics {
@@ -64,7 +59,7 @@ export interface TopItem {
 
 export const invoiceService = {
   /**
-   * Get list of invoices with filters
+   * Get list of invoices
    */
   async getList(
     pageNumber: number = 1,
@@ -75,10 +70,7 @@ export const invoiceService = {
     sortBy?: string,
     sortOrder?: "asc" | "desc"
   ) {
-    const params: Record<string, any> = {
-      pageNumber,
-      pageSize,
-    };
+    const params: Record<string, any> = {};
 
     if (fromDate) params.fromDate = fromDate;
     if (toDate) params.toDate = toDate;
@@ -86,29 +78,18 @@ export const invoiceService = {
     if (sortBy) params.sortBy = sortBy;
     if (sortOrder) params.sortOrder = sortOrder;
 
-    const response = await axiosInstance.get("/invoice/getlist", { params });
+    const response = await axiosInstance.get("/Invoice/GetList", { params });
     
-    // Handle different response structures
+    // API returns direct array
     const data = response.data;
-    if (data.data && Array.isArray(data.data)) {
-      return {
-        invoices: data.data,
-        totalCount: data.totalCount || data.data.length,
-        pageNumber: data.pageNumber || pageNumber,
-        pageSize: data.pageSize || pageSize,
-      };
-    }
+    const invoicesArray = Array.isArray(data) ? data : [];
     
-    if (Array.isArray(data)) {
-      return {
-        invoices: data,
-        totalCount: data.length,
-        pageNumber,
-        pageSize,
-      };
-    }
-
-    return data;
+    return {
+      invoices: invoicesArray,
+      totalCount: invoicesArray.length,
+      pageNumber,
+      pageSize,
+    };
   },
 
   /**
@@ -119,7 +100,7 @@ export const invoiceService = {
     if (fromDate) params.fromDate = fromDate;
     if (toDate) params.toDate = toDate;
 
-    const response = await axiosInstance.get("/invoice/getmetrics", { params });
+    const response = await axiosInstance.get("/Invoice/GetMetrics", { params });
     return response.data;
   },
 
@@ -127,18 +108,11 @@ export const invoiceService = {
    * Get 12-month trend data
    */
   async getTrend12m() {
-    const response = await axiosInstance.get("/invoice/gettrend12m");
+    const response = await axiosInstance.get("/Invoice/GetTrend12m");
     
-    // Handle different response structures
+    // API returns direct array
     const data = response.data;
-    if (Array.isArray(data)) {
-      return data;
-    }
-    if (data.data && Array.isArray(data.data)) {
-      return data.data;
-    }
-    
-    return data || [];
+    return Array.isArray(data) ? data : [];
   },
 
   /**
@@ -149,18 +123,11 @@ export const invoiceService = {
     if (fromDate) params.fromDate = fromDate;
     if (toDate) params.toDate = toDate;
 
-    const response = await axiosInstance.get("/invoice/topitems", { params });
+    const response = await axiosInstance.get("/Invoice/TopItems", { params });
     
-    // Handle different response structures
+    // API returns direct array
     const data = response.data;
-    if (Array.isArray(data)) {
-      return data;
-    }
-    if (data.data && Array.isArray(data.data)) {
-      return data.data;
-    }
-    
-    return data || [];
+    return Array.isArray(data) ? data : [];
   },
 
   /**
@@ -168,7 +135,7 @@ export const invoiceService = {
    */
   async insertUpdate(
     invoiceID: number,
-    invoiceNo: string,
+    invoiceNo: number,
     invoiceDate: string,
     customerName: string,
     address: string,
@@ -179,39 +146,48 @@ export const invoiceService = {
     taxAmount: number,
     updatedOnPrev?: string | null
   ) {
+    // Transform lines to API format
+    const apiLines = lines.map((line, index) => ({
+      rowNo: (line.rowNo || index + 1),
+      itemID: line.itemID,
+      description: line.description || '',
+      quantity: line.quantity || 0,
+      rate: line.rate || 0,
+      discountPct: line.discountPct || 0,
+    }));
+
     const payload: Record<string, any> = {
-      invoiceID,
-      invoiceNo,
+      invoiceNo: Number(invoiceNo), // Convert to number
       invoiceDate,
       customerName,
       address,
       city,
       notes,
-      lines,
+      lines: apiLines,
       taxPercentage,
-      taxAmount,
+      taxAmount: taxAmount || 0,
     };
 
-    if (updatedOnPrev) {
-      payload.updatedOnPrev = updatedOnPrev;
+    // Add invoiceID and updatedOnPrev for updates
+    if (invoiceID > 0) {
+      payload.invoiceID = invoiceID;
+      if (updatedOnPrev) {
+        payload.updatedOnPrev = updatedOnPrev;
+      }
     }
 
-    const response = await axiosInstance.post("/invoice/insertupdate", payload);
+    // Use POST for new, PUT for update
+    const method = invoiceID === 0 ? "post" : "put";
+    const response = await axiosInstance[method]("/Invoice", payload);
     
-    const data = response.data;
-    if (data.data) {
-      return data.data;
-    }
-    return data;
+    return response.data;
   },
 
   /**
    * Delete invoice
    */
   async delete(invoiceID: number) {
-    const response = await axiosInstance.post("/invoice/delete", {
-      invoiceID,
-    });
+    const response = await axiosInstance.delete(`/Invoice/${invoiceID}`);
     return response.data;
   },
 
@@ -219,14 +195,9 @@ export const invoiceService = {
    * Get invoice by ID
    */
   async getByID(invoiceID: number) {
-    const response = await axiosInstance.get("/invoice/getbyid", {
-      params: { invoiceID },
-    });
+    const response = await axiosInstance.get(`/Invoice/${invoiceID}`);
     
     const data = response.data;
-    if (data.data) {
-      return data.data;
-    }
     return data;
   },
 };

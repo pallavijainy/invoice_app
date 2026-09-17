@@ -1,33 +1,27 @@
 import axiosInstance from "./api";
 
 export interface Item {
-  itemID: number;
+  primaryKeyID?: number;
+  itemID?: number;
   itemName: string;
-  description: string;
-  saleRate: number;
+  description?: string;
+  salesRate: number;
   discountPct: number;
   updatedOn?: string;
   picture?: string;
-}
-
-export interface ItemListResponse {
-  items: Item[];
-  totalCount: number;
-  pageNumber: number;
-  pageSize: number;
 }
 
 export interface ItemLookupItem {
   itemID: number;
   itemName: string;
   description: string;
-  saleRate: number;
+  salesRate: number;
   discountPct: number;
 }
 
 export const itemService = {
   /**
-   * Get list of items with pagination
+   * Get list of items
    */
   async getList(
     pageNumber: number = 1,
@@ -36,62 +30,88 @@ export const itemService = {
     sortBy?: string,
     sortOrder?: "asc" | "desc"
   ) {
-    const params: Record<string, any> = {
-      pageNumber,
-      pageSize,
-    };
+    const params: Record<string, any> = {};
 
     if (searchTerm) params.searchTerm = searchTerm;
     if (sortBy) params.sortBy = sortBy;
     if (sortOrder) params.sortOrder = sortOrder;
 
-    const response = await axiosInstance.get("/item/getlist", {
+    const response = await axiosInstance.get("/Item/GetList", {
       params,
     });
     
-    // Handle different response structures
+    // API returns direct array
     const data = response.data;
-    if (data.data && Array.isArray(data.data)) {
-      return {
-        items: data.data,
-        totalCount: data.totalCount || data.data.length,
-        pageNumber: data.pageNumber || pageNumber,
-        pageSize: data.pageSize || pageSize,
-      };
-    }
+    const itemsArray = Array.isArray(data) ? data : [];
     
-    if (Array.isArray(data)) {
-      return {
-        items: data,
-        totalCount: data.length,
-        pageNumber,
-        pageSize,
-      };
-    }
-
-    return data;
+    return {
+      items: itemsArray,
+      totalCount: itemsArray.length,
+      pageNumber,
+      pageSize,
+    };
   },
 
   /**
    * Get lookup list for item selection in invoices
    */
   async getLookupList() {
-    const response = await axiosInstance.get("/item/getlookuplist");
+    const response = await axiosInstance.get("/Item/GetLookupList");
     
-    // Handle different response structures
+    // API returns direct array
     const data = response.data;
-    if (Array.isArray(data)) {
-      return data;
-    }
-    if (data.data && Array.isArray(data.data)) {
-      return data.data;
-    }
-    
-    return data || [];
+    return Array.isArray(data) ? data : [];
   },
 
   /**
-   * Insert or update an item
+   * Insert a new item
+   */
+  async insert(
+    itemName: string,
+    description: string,
+    salesRate: number,
+    discountPct: number
+  ) {
+    const payload = {
+      itemName,
+      description: description || null,
+      salesRate,
+      discountPct,
+    };
+
+    const response = await axiosInstance.post("/Item", payload);
+    return response.data;
+  },
+
+  /**
+   * Update an existing item
+   */
+  async update(
+    itemID: number,
+    itemName: string,
+    description: string,
+    salesRate: number,
+    discountPct: number,
+    updatedOn?: string | null
+  ) {
+    const payload: any = {
+      itemID,
+      itemName,
+      description: description || null,
+      salesRate,
+      discountPct,
+    };
+
+    if (updatedOn) {
+      payload.updatedOn = updatedOn;
+    }
+
+    const response = await axiosInstance.put("/Item", payload);
+    return response.data;
+  },
+
+  /**
+   * Insert or update an item (combined for backward compatibility)
    */
   async insertUpdate(
     itemID: number,
@@ -102,58 +122,47 @@ export const itemService = {
     updatedOnPrev?: string | null,
     pictureFile?: File
   ) {
-    const formData = new FormData();
-    formData.append("itemID", itemID.toString());
-    formData.append("itemName", itemName);
-    formData.append("description", description);
-    formData.append("saleRate", saleRate.toString());
-    formData.append("discountPct", discountPct.toString());
-
-    if (updatedOnPrev) {
-      formData.append("updatedOnPrev", updatedOnPrev);
+    let result;
+    
+    if (itemID === 0) {
+      // New item
+      result = await this.insert(itemName, description, saleRate, discountPct);
+    } else {
+      // Update item
+      result = await this.update(itemID, itemName, description, saleRate, discountPct, updatedOnPrev);
     }
 
-    if (pictureFile) {
-      formData.append("picture", pictureFile);
+    // Upload picture if provided
+    if (pictureFile && result?.primaryKeyID) {
+      await this.uploadPicture(result.primaryKeyID, pictureFile);
     }
 
-    const response = await axiosInstance.post<Item>("/item", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    return response.data;
+    return result;
   },
 
   /**
    * Delete an item
    */
   async delete(itemID: number) {
-    const response = await axiosInstance.post("/item/delete", {
-      itemID,
-    });
+    const response = await axiosInstance.delete(`/Item/${itemID}`);
     return response.data;
   },
 
   /**
-   * Get item picture
+   * Get item picture URL
    */
   async getPicture(itemID: number) {
-    const response = await axiosInstance.get(`/item/picture`, {
-      params: { itemID },
-      responseType: "blob",
-    });
+    const response = await axiosInstance.get(`/Item/Picture/${itemID}`);
+    // API returns URL string
     return response.data;
   },
 
   /**
-   * Get item picture thumbnail
+   * Get item picture thumbnail URL
    */
   async getPictureThumbnail(itemID: number) {
-    const response = await axiosInstance.get(`/item/pictureThumbnail`, {
-      params: { itemID },
-      responseType: "blob",
-    });
+    const response = await axiosInstance.get(`/Item/PictureThumbnail/${itemID}`);
+    // API returns URL string
     return response.data;
   },
 
@@ -162,14 +171,10 @@ export const itemService = {
    */
   async uploadPicture(itemID: number, pictureFile: File) {
     const formData = new FormData();
-    formData.append("itemID", itemID.toString());
-    formData.append("picture", pictureFile);
+    formData.append("ItemID", itemID.toString());
+    formData.append("File", pictureFile);
 
-    const response = await axiosInstance.post("/item/picture/upload", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const response = await axiosInstance.post("/Item/UpdateItemPicture", formData);
     return response.data;
   },
 };

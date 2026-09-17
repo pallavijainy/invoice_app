@@ -7,6 +7,9 @@ const api = {
 
 const axiosInstance = axios.create({
     baseURL: api.baseUrl,
+    headers: {
+        'Content-Type': 'application/json',
+    },
 });
 
 axiosInstance.interceptors.request.use(
@@ -15,6 +18,12 @@ axiosInstance.interceptors.request.use(
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
+        
+        // Don't override Content-Type for multipart/form-data
+        if (config.data instanceof FormData) {
+            delete config.headers['Content-Type'];
+        }
+        
         return config;
     },
     (error) => {

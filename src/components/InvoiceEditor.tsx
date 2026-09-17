@@ -45,13 +45,13 @@ const InvoiceEditor = ({
   } = useForm<InvoiceEditorFormData>({
     resolver: zodResolver(invoiceEditorSchema) as any,
     defaultValues: {
-      invoiceNo: "",
+      invoiceNo: 0,
       invoiceDate: new Date().toISOString().split("T")[0],
       customerName: "",
       address: "",
       city: "",
       notes: "",
-      lines: [{ itemID: 0, desc: "", qty: 0, rate: 0, disc: 0 }],
+      lines: [{ itemID: 0, description: "", quantity: 0, rate: 0, discountPct: 0 }],
       taxPercentage: 0,
       taxAmount: 0,
     },
@@ -73,7 +73,7 @@ const InvoiceEditor = ({
   // Load invoice data if editing
   useEffect(() => {
     if (invoice) {
-      setValue("invoiceNo", invoice.invoiceNo);
+      setValue("invoiceNo", Number(invoice.invoiceNo));
       setValue("invoiceDate", invoice.invoiceDate);
       setValue("customerName", invoice.customerName);
       setValue("address", invoice.address);
@@ -102,15 +102,15 @@ const InvoiceEditor = ({
     const item = itemLookup.find((i) => i.itemID === itemID);
     if (item) {
       setValue(`lines.${lineIndex}.itemID`, item.itemID);
-      setValue(`lines.${lineIndex}.desc`, item.description);
-      setValue(`lines.${lineIndex}.rate`, item.saleRate);
-      setValue(`lines.${lineIndex}.disc`, item.discountPct);
+      setValue(`lines.${lineIndex}.description`, item.description);
+      setValue(`lines.${lineIndex}.rate`, item.salesRate);
+      setValue(`lines.${lineIndex}.discountPct`, item.discountPct);
     }
   };
 
   const calculateLineAmount = (line: InvoiceLineFormData): number => {
-    const subtotal = (line.qty || 0) * (line.rate || 0);
-    const discount = subtotal * ((line.disc || 0) / 100);
+    const subtotal = (line.quantity || 0) * (line.rate || 0);
+    const discount = subtotal * ((line.discountPct || 0) / 100);
     return subtotal - discount;
   };
 
@@ -138,7 +138,7 @@ const InvoiceEditor = ({
   };
 
   const addRow = () => {
-    append({ itemID: 0, desc: "", qty: 0, rate: 0, disc: 0 });
+    append({ itemID: 0, description: "", quantity: 0, rate: 0, discountPct: 0 });
   };
 
   const copyRow = (index: number) => {
@@ -207,15 +207,15 @@ const InvoiceEditor = ({
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
       {/* Modal */}
-      <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg my-8">
+      <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg my-8 flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white">
-          <h2 className="text-xl font-semibold text-gray-800">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white z-10 flex-shrink-0">
+          <h2 className="text-xl font-semibold text-gray-800 flex-1">
             {invoice?.invoiceID ? "Edit Invoice" : "New Invoice"}
           </h2>
           <button
             onClick={handleClose}
-            className="p-1 hover:bg-gray-100 rounded-md transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-md transition-colors flex-shrink-0"
             aria-label="Close modal"
           >
             <Close />
@@ -223,26 +223,26 @@ const InvoiceEditor = ({
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6 overflow-y-auto flex-1">
           {/* Invoice Details */}
           <section>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+            <h3 className="text-base font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
               Invoice Details
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div>
                 <label
                   htmlFor="invoiceNo"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Invoice No
+                  Invoice No<span className="text-red-500">*</span>
                 </label>
                 <input
                   id="invoiceNo"
-                  type="text"
-                  placeholder="INV-001"
+                  type="number"
+                  placeholder="1"
                   disabled={isSubmitting}
-                  {...register("invoiceNo")}
+                  {...register("invoiceNo", { valueAsNumber: true })}
                   className={`w-full h-10 border rounded-md px-3 text-sm outline-none transition focus:border-gray-500 focus:ring-1 focus:ring-gray-300 ${
                     errors.invoiceNo ? "border-red-400" : "border-gray-300"
                   }`}
@@ -320,7 +320,7 @@ const InvoiceEditor = ({
                 />
               </div>
 
-              <div className="col-span-2">
+              <div className="lg:col-span-2">
                 <label
                   htmlFor="address"
                   className="block text-sm font-medium text-gray-700 mb-2"
@@ -339,7 +339,7 @@ const InvoiceEditor = ({
                 />
               </div>
 
-              <div className="col-span-2">
+              <div className="lg:col-span-3">
                 <label
                   htmlFor="notes"
                   className="block text-sm font-medium text-gray-700 mb-2"
@@ -363,17 +363,17 @@ const InvoiceEditor = ({
           {/* Line Items */}
           <section>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Line Items</h3>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={addRow}
-                  className="flex items-center gap-2 h-8 px-3 rounded-md border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors"
-                >
-                  <Add fontSize="small" />
-                  Add Row
-                </button>
-              </div>
+              <h3 className="text-base font-semibold text-gray-800 pb-2 border-b border-gray-200 flex-1">
+                Line Items
+              </h3>
+              <button
+                type="button"
+                onClick={addRow}
+                className="flex items-center gap-2 h-8 px-3 rounded-md border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors ml-4"
+              >
+                <Add fontSize="small" />
+                Add Row
+              </button>
             </div>
 
             {/* Line Items Table */}
@@ -444,7 +444,7 @@ const InvoiceEditor = ({
                         <td className="px-3 py-2">
                           <input
                             type="text"
-                            {...register(`lines.${index}.desc`)}
+                            {...register(`lines.${index}.description`)}
                             disabled={isSubmitting}
                             className="w-full h-8 border border-gray-300 rounded-md px-2 text-sm outline-none focus:border-gray-500"
                           />
@@ -453,7 +453,7 @@ const InvoiceEditor = ({
                           <input
                             type="number"
                             step="0.01"
-                            {...register(`lines.${index}.qty`, {
+                            {...register(`lines.${index}.quantity`, {
                               valueAsNumber: true,
                             })}
                             disabled={isSubmitting}
@@ -475,7 +475,7 @@ const InvoiceEditor = ({
                           <input
                             type="number"
                             step="0.01"
-                            {...register(`lines.${index}.disc`, {
+                            {...register(`lines.${index}.discountPct`, {
                               valueAsNumber: true,
                             })}
                             disabled={isSubmitting}
@@ -526,51 +526,56 @@ const InvoiceEditor = ({
           </section>
 
           {/* Totals Section */}
-          <section className="border-t border-gray-200 pt-6">
-            <div className="flex justify-end max-w-xs ml-auto space-y-3">
-              {/* Sub Total */}
-              <div className="flex justify-between w-full">
-                <span className="text-sm text-gray-600">Sub Total:</span>
-                <span className="text-sm font-medium text-gray-900">
-                  ${subTotal.toFixed(2)}
-                </span>
-              </div>
-
-              {/* Tax */}
-              <div className="flex justify-between gap-3 items-center w-full">
-                <span className="text-sm text-gray-600">Tax:</span>
-                <div className="flex gap-2">
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={watchTaxPercentage}
-                    onChange={(e) =>
-                      handleTaxPercentageChange(parseFloat(e.target.value) || 0)
-                    }
-                    disabled={isSubmitting}
-                    className="w-16 h-8 border border-gray-300 rounded-md px-2 text-sm outline-none focus:border-gray-500 text-right"
-                  />
-                  <span className="text-sm text-gray-600">%</span>
-                  <span className="text-sm text-gray-600">$</span>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={watch("taxAmount")}
-                    onChange={(e) =>
-                      handleTaxAmountChange(parseFloat(e.target.value) || 0)
-                    }
-                    disabled={isSubmitting}
-                    className="w-24 h-8 border border-gray-300 rounded-md px-2 text-sm outline-none focus:border-gray-500 text-right"
-                  />
+          <section className="border-t border-gray-200 pt-4">
+            <div className="flex justify-end">
+              <div className="w-full max-w-sm space-y-2">
+                {/* Sub Total */}
+                <div className="flex justify-between items-center px-3 py-2 bg-gray-50 rounded-md">
+                  <span className="text-sm font-medium text-gray-700">Sub Total:</span>
+                  <span className="text-sm font-semibold text-gray-900">
+                    ${subTotal.toFixed(2)}
+                  </span>
                 </div>
-              </div>
 
-              {/* Invoice Amount */}
-              <div className="flex justify-between w-full border-t border-gray-200 pt-3 font-semibold">
-                <span className="text-base text-gray-900">Invoice Amount:</span>
-                <span className="text-lg text-gray-900">
-                  ${invoiceAmount.toFixed(2)}
-                </span>
+                {/* Tax % and Amount */}
+                <div className="flex justify-between items-center px-3 py-2 bg-gray-50 rounded-md gap-4">
+                  <label className="text-sm font-medium text-gray-700">Tax:</label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={watchTaxPercentage}
+                      onChange={(e) =>
+                        handleTaxPercentageChange(parseFloat(e.target.value) || 0)
+                      }
+                      disabled={isSubmitting}
+                      className="w-20 h-8 border border-gray-300 rounded-md px-2 text-sm outline-none focus:border-gray-500 text-right"
+                      placeholder="0"
+                    />
+                    <span className="text-sm text-gray-600 w-5">%</span>
+                    <span className="text-sm text-gray-600">=</span>
+                    <span className="text-sm text-gray-600">$</span>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={watch("taxAmount")}
+                      onChange={(e) =>
+                        handleTaxAmountChange(parseFloat(e.target.value) || 0)
+                      }
+                      disabled={isSubmitting}
+                      className="w-24 h-8 border border-gray-300 rounded-md px-2 text-sm outline-none focus:border-gray-500 text-right"
+                      placeholder="0.00"
+                    />
+                  </div>
+                </div>
+
+                {/* Invoice Amount */}
+                <div className="flex justify-between items-center px-3 py-3 bg-blue-50 rounded-md border border-blue-200">
+                  <span className="text-sm font-bold text-gray-900">Invoice Amount:</span>
+                  <span className="text-lg font-bold text-blue-600">
+                    ${invoiceAmount.toFixed(2)}
+                  </span>
+                </div>
               </div>
             </div>
           </section>
@@ -581,26 +586,27 @@ const InvoiceEditor = ({
               <p className="text-sm text-red-600">{serverError}</p>
             </div>
           )}
-
-          {/* Actions */}
-          <div className="border-t border-gray-200 pt-4 flex gap-3 justify-end">
-            <button
-              type="button"
-              onClick={handleClose}
-              disabled={isSubmitting}
-              className="h-10 px-6 rounded-md border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={isSubmitting || isLoading}
-              className="h-10 px-6 rounded-md bg-gray-700 text-white text-sm font-medium hover:bg-gray-800 transition-colors disabled:opacity-60"
-            >
-              {isSubmitting || isLoading ? "Saving..." : "Save"}
-            </button>
-          </div>
         </form>
+
+        {/* Actions - Sticky Footer */}
+        <div className="border-t border-gray-200 bg-gray-50 px-6 py-4 flex gap-3 justify-end sticky bottom-0 z-10 flex-shrink-0">
+          <button
+            type="button"
+            onClick={handleClose}
+            disabled={isSubmitting}
+            className="h-10 px-6 rounded-md border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            disabled={isSubmitting || isLoading}
+            onClick={handleSubmit(onSubmit)}
+            className="h-10 px-6 rounded-md bg-gray-700 text-white text-sm font-medium hover:bg-gray-800 transition-colors disabled:opacity-60"
+          >
+            {isSubmitting || isLoading ? "Saving..." : "Save"}
+          </button>
+        </div>
       </div>
     </div>
   );

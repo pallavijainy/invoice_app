@@ -138,7 +138,7 @@ const ItemsPage = () => {
       if (visibleColumns.picture) row.push(""); // Skip picture
       if (visibleColumns.itemName) row.push(item.itemName);
       if (visibleColumns.description) row.push(item.description || "");
-      if (visibleColumns.saleRate) row.push(item.saleRate);
+      if (visibleColumns.saleRate) row.push(item.salesRate);
       if (visibleColumns.discountPct) row.push(item.discountPct);
       return row;
     });
@@ -381,7 +381,7 @@ const ItemsPage = () => {
                         {visibleColumns.saleRate && (
                           <td className="px-4 py-3 text-right">
                             <p className="text-sm font-medium text-gray-900">
-                              ${item.saleRate.toFixed(2)}
+                              ${item.salesRate.toFixed(2)}
                             </p>
                           </td>
                         )}
@@ -453,7 +453,7 @@ const ItemsPage = () => {
                             <div>
                               <p className="text-xs text-gray-600">Sale Rate</p>
                               <p className="font-medium text-gray-900">
-                                ${item.saleRate.toFixed(2)}
+                                ${item.salesRate.toFixed(2)}
                               </p>
                             </div>
                           )}

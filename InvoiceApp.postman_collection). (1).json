@@ -1,0 +1,3470 @@
+{
+	"info": {
+		"_postman_id": "648b6b45-8daf-471d-8b26-cf7d558c150b",
+		"name": "InvoiceApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27200411",
+		"_collection_link": "https://blue-trinity-776262.postman.co/workspace/My-Workspace~06c15828-0bf5-480d-85b1-70c6aed0e4cf/collection/27200411-648b6b45-8daf-471d-8b26-cf7d558c150b?action=share&source=collection_link&creator=27200411"
+	},
+	"item": [
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "FirstName",
+									"value": "John",
+									"type": "text"
+								},
+								{
+									"key": "LastName",
+									"value": "Doe",
+									"type": "text"
+								},
+								{
+									"key": "Email",
+									"value": "johndoe@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "Password",
+									"value": "John@123",
+									"type": "text"
+								},
+								{
+									"key": "CompanyName",
+									"value": "IT Tech",
+									"type": "text"
+								},
+								{
+									"key": "Address",
+									"value": "123 Main Street",
+									"type": "text"
+								},
+								{
+									"key": "City",
+									"value": "Mumbai",
+									"type": "text"
+								},
+								{
+									"key": "ZipCode",
+									"value": "400001",
+									"type": "text"
+								},
+								{
+									"key": "Industry",
+									"value": "IT Services",
+									"type": "text"
+								},
+								{
+									"key": "CurrencySymbol",
+									"value": "₹",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/admin/Downloads/unnamed.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/Signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"Signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create profile",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "FirstName",
+											"value": "Mayank",
+											"type": "text"
+										},
+										{
+											"key": "LastName",
+											"value": "Gangrafe",
+											"type": "text"
+										},
+										{
+											"key": "Email",
+											"value": "Mayank1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "Password",
+											"value": "Mayank@123",
+											"type": "text"
+										},
+										{
+											"key": "CompanyName",
+											"value": "IT Tech",
+											"type": "text"
+										},
+										{
+											"key": "Address",
+											"value": "123 Main Street",
+											"type": "text"
+										},
+										{
+											"key": "City",
+											"value": "Mumbai",
+											"type": "text"
+										},
+										{
+											"key": "ZipCode",
+											"value": "400001",
+											"type": "text"
+										},
+										{
+											"key": "Industry",
+											"value": "IT Services",
+											"type": "text"
+										},
+										{
+											"key": "CurrencySymbol",
+											"value": "₹",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/recru/OneDrive/Pictures/images12121312.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Auth/Signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Auth",
+										"Signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:20:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjoiMyIsIkNvbXBhbnkiOiIzIiwiZXhwIjoxNzYwMDk1MjE0LCJpc3MiOiJJbnZvaWNlQXBwLkFQSSIsImF1ZCI6Ikludm9pY2VBcHAifQ.FoDscuBoPzoMF9ht7LnsVOpNA38Q9kzbPt39rW52MqI\",\n    \"user\": {\n        \"userID\": 3,\n        \"firstName\": \"Mayank\",\n        \"lastName\": \"Gangrafe\",\n        \"email\": \"Mayank1@gmail.com\"\n    },\n    \"company\": {\n        \"companyID\": 3,\n        \"companyName\": \"IT Tech\",\n        \"currencySymbol\": \"₹\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Company Logo Url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Auth/GetCompanyLogoUrl/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"GetCompanyLogoUrl",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get company logo image url",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Auth/GetCompanyLogoUrl/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Auth",
+										"GetCompanyLogoUrl",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:20:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "https://sr360developmentstorage.blob.core.windows.net/invoiceappcontainer/Companies/Company0000000003/CompanyLogo/Thumbnail.jpg?sv=2025-07-05&se=2025-09-10T11%3A23%3A23Z&sr=b&sp=r&rscd=attachment%3B+filename+%3D+\"Thumbnail.jpg\"&sig=VnsO7TsJB2w30R7OwxYNaUuLnFCcru62fdK%2B93MWF%2FU%3D"
+						}
+					]
+				},
+				{
+					"name": "Get Company Logo Thumbnail Url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Auth/GetCompanyLogoThumbnailUrl/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"GetCompanyLogoThumbnailUrl",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Company Logo Thumbnail Url",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Auth/GetCompanyLogoThumbnailUrl/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Auth",
+										"GetCompanyLogoThumbnailUrl",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:21:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "https://sr360developmentstorage.blob.core.windows.net/invoiceappcontainer/Companies/Company0000000003%5CCompanyLogo%5CThumbnail%5CThumbnail.jpg?sv=2025-07-05&se=2025-09-10T11%3A24%3A03Z&sr=b&sp=r&rscd=attachment%3B+filename+%3D+\"Thumbnail.jpg\"&sig=D9gXGgDX2ofLRhzD69Z%2FZ%2B0c2kwUCeQeIyhp8DOUZnc%3D"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"johndoe@gmail.com\",\r\n  \"password\": \"John@123\",\r\n  \"rememberMe\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Auth/Login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Auth",
+								"Login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"mayank@gmail.com\",\r\n  \"password\": \"Mayank@123\",\r\n  \"rememberMe\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Auth/Login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Auth",
+										"Login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:21:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjoiMSIsIkNvbXBhbnkiOiIxIiwiZXhwIjoxNzU3NTMyMDk2LCJpc3MiOiJJbnZvaWNlQXBwLkFQSSIsImF1ZCI6Ikludm9pY2VBcHAifQ.xDQXlLgw4kB_2RAgcydWgugnap0Eq3zNkvhyngOTS2I\",\n    \"user\": {\n        \"userID\": 1,\n        \"firstName\": \"Mayank\",\n        \"lastName\": \"Gangrafe\",\n        \"email\": \"Mayank@gmail.com\"\n    },\n    \"company\": {\n        \"companyID\": 1,\n        \"companyName\": \"IT Tech\",\n        \"currencySymbol\": \"₹\"\n    }\n}"
+						},
+						{
+							"name": "wong credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"mayank@gmail.com\",\r\n  \"password\": \"Mayank@1234\",\r\n  \"rememberMe\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Auth/Login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Auth",
+										"Login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:22:10 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Invalid email or password."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Picture",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Item/Picture/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item",
+								"Picture",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get Image URL",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/Picture/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"Picture",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:36:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "https://sr360developmentstorage.blob.core.windows.net/invoiceappcontainer/Companies/Company0000000001/Item/I0000000004/images.jpg?sv=2025-07-05&se=2025-09-09T09%3A39%3A17Z&sr=b&sp=r&rscd=attachment%3B+filename+%3D+\"images.jpg\"&sig=%2Fl2ftiyEaILnubte2gDOKlvi1BLAlxci1iUsNC%2BLZow%3D"
+						}
+					]
+				},
+				{
+					"name": "UpdateItemPicture",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ItemID",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/C:/Users/recru/OneDrive/Pictures/images.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Item/UpdateItemPicture",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item",
+								"UpdateItemPicture"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "upload productImage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ItemID",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/recru/OneDrive/Pictures/images12121312.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/UpdateItemPicture",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"UpdateItemPicture"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:12:52 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "PictureThumbnail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Item/PictureThumbnail/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item",
+								"PictureThumbnail",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get image thumbnail url",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/PictureThumbnail/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"PictureThumbnail",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:36:34 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "https://sr360developmentstorage.blob.core.windows.net/invoiceappcontainer/Companies/Company0000000001%5CItem%5CI0000000004%5CThumbnail%5Cimages.jpg?sv=2025-07-05&se=2025-09-09T09%3A39%3A35Z&sr=b&sp=r&rscd=attachment%3B+filename+%3D+\"images.jpg\"&sig=OIXNEbf0NtHxvW94KJ8neezwKUqLaezk3t0HdKJADb8%3D"
+						}
+					]
+				},
+				{
+					"name": "GetList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Item/GetList",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item",
+								"GetList"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getList with diffrent company",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/GetList",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"GetList"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 08:54:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						},
+						{
+							"name": "with id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/GetList/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"GetList",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 12:15:32 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"primaryKeyID\": 1,\n        \"itemID\": 1,\n        \"itemName\": \"hair gel\",\n        \"description\": null,\n        \"salesRate\": 400,\n        \"discountPct\": 99.99,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T10:52:22.163\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getmodel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Item/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getmodel for diffrent companyUser",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"2"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 08:55:23 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "getlookuplist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Item/GetLookupList",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item",
+								"GetLookupList"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "for other company",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/GetLookupList",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"GetLookupList"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 08:56:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"itemName\": \"Orange\",\r\n  \"description\": \"\",\r\n  \"salesRate\": 100.00,\r\n  \"discountPct\": 10.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Item",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "valid insert",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"itemName\": \"string\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": 0,\r\n  \"discountPct\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 08:58:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Location",
+									"value": ""
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 5,\n    \"updatedOn\": null,\n    \"additionalResponseData\": null,\n    \"nofRecordsEffected\": 1\n}"
+						},
+						{
+							"name": "duplicate name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"itemName\": \"string\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": 0,\r\n  \"discountPct\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 08:58:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Duplicate item name not accepted."
+						},
+						{
+							"name": "discount gretaer than 100",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"itemName\": \"bike\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": -400,\r\n  \"discountPct\": 200\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:05:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Discount percentage should be between 0 to 100."
+						},
+						{
+							"name": "negative sales Rate",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"itemName\": \"bike\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": -400,\r\n  \"discountPct\":99.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:06:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Sales rate should be greater than or equals to 0."
+						},
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"itemName\": \"123456789012345678901234567980123456789012345678901234567980\",\r\n  \"description\": \" \",\r\n  \"salesRate\": 400,\r\n  \"discountPct\":99.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:07:40 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"ItemName\": [\n            \"Can not accept more than 50 characters in Item Name.\"\n        ]\n    },\n    \"traceId\": \"00-83fb224d98570d1df10a0f56b27e412c-42437b6b55b912c0-00\"\n}"
+						},
+						{
+							"name": "desc null",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"itemName\": \"gloves\",\r\n  \"description\": null,\r\n  \"salesRate\": 400,\r\n  \"discountPct\":99.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:08:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Location",
+									"value": ""
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 15,\n    \"updatedOn\": null,\n    \"additionalResponseData\": null,\n    \"nofRecordsEffected\": 1\n}"
+						},
+						{
+							"name": "insert with sspaces",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"itemName\": \"       hair oil\",\r\n  \"description\": null,\r\n  \"salesRate\": 400,\r\n  \"discountPct\":99.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 10:01:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Location",
+									"value": ""
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 22,\n    \"updatedOn\": null,\n    \"additionalResponseData\": null,\n    \"nofRecordsEffected\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"updatedOn\": null,\r\n  \"itemID\": 1,\r\n  \"itemName\": \"APPLE\",\r\n  \"description\": \"Green Apple\",\r\n  \"salesRate\": 120.00,\r\n  \"discountPct\": 10.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Item",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "invalid id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"updatedOn\": null,\r\n  \"itemID\": 1,\r\n  \"itemName\": \"strin\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": 0,\r\n  \"discountPct\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:00:55 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Record not found."
+						},
+						{
+							"name": "valid save",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"updatedOn\": null,\r\n  \"itemID\": 17,\r\n  \"itemName\": \" kingmaharaja mac\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": 10,\r\n  \"discountPct\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:56:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 17,\n    \"updatedOn\": \"2025-09-09T09:56:57.177\",\n    \"additionalResponseData\": null,\n    \"nofRecordsEffected\": 1\n}"
+						},
+						{
+							"name": "concurrency check",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"updatedOn\": null,\r\n  \"itemID\": 17,\r\n  \"itemName\": \" kingmaharaja mac\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": 10,\r\n  \"discountPct\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:57:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Record already modified by another user."
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"itemName\": \"string\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": 0,\r\n  \"discountPct\": 0\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Item/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "record delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"itemName\": \"string\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": 0,\r\n  \"discountPct\": 0\r\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:11:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "again delete same record",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"itemName\": \"string\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": 0,\r\n  \"discountPct\": 0\r\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"2"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:11:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Record not found."
+						}
+					]
+				},
+				{
+					"name": "checkDuplicateItemName",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"updatedOn\": null,\r\n  \"itemID\": 4,\r\n  \"itemName\": \"strin\",\r\n  \"description\": \"string\",\r\n  \"salesRate\": 10,\r\n  \"discountPct\": 0\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Item/CheckDuplicateItemName?ItemName=APPLE&ExcludeID=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Item",
+								"CheckDuplicateItemName"
+							],
+							"query": [
+								{
+									"key": "ItemName",
+									"value": "APPLE"
+								},
+								{
+									"key": "ExcludeID",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "if exists",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/CheckDuplicateItemName?ItemName=strin&ExcludeID=2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"CheckDuplicateItemName"
+									],
+									"query": [
+										{
+											"key": "ItemName",
+											"value": "strin"
+										},
+										{
+											"key": "ExcludeID",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:59:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "true"
+						},
+						{
+							"name": "if not exists",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ControllerName}}/CheckDuplicateItemName?ItemName=strin&ExcludeID=4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ControllerName}}",
+										"CheckDuplicateItemName"
+									],
+									"query": [
+										{
+											"key": "ItemName",
+											"value": "strin"
+										},
+										{
+											"key": "ExcludeID",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Sep 2025 09:59:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "false"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "GetModel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Invoice/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Invoice",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get model from response ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 09:30:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 3,\n    \"invoiceID\": 3,\n    \"invoiceNo\": 2,\n    \"invoiceDate\": \"2025-09-10T00:00:00\",\n    \"customerName\": \"yash\",\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"taxPercentage\": 10,\n    \"notes\": \"string\",\n    \"lines\": [\n        {\n            \"rowNo\": 1,\n            \"itemID\": 1,\n            \"description\": \"string\",\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discountPct\": 12\n        }\n    ],\n    \"subTotal\": 176,\n    \"taxAmount\": 17.6,\n    \"invoiceAmount\": 193.6,\n    \"createdByUserName\": \"Mayank Gangrade\",\n    \"createdOn\": \"2025-09-10T08:24:24.62\",\n    \"updatedByUserName\": \"\",\n    \"updatedOn\": null\n}"
+						},
+						{
+							"name": "fetch data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/12",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"12"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 12:06:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 10,\n    \"invoiceID\": 10,\n    \"invoiceNo\": 5,\n    \"invoiceDate\": \"2025-09-10T00:00:00\",\n    \"customerName\": \"yash\",\n    \"address\": \"geeta nagar\",\n    \"city\": \"indore\",\n    \"taxPercentage\": 55,\n    \"notes\": \"test sample\",\n    \"lines\": [\n        {\n            \"rowNo\": 1,\n            \"itemID\": 2,\n            \"description\": \"strinnothing\",\n            \"quantity\": 1000,\n            \"rate\": 500,\n            \"discountPct\": 10\n        },\n        {\n            \"rowNo\": 2,\n            \"itemID\": 1,\n            \"description\": \"strinnothing\",\n            \"quantity\": 1500,\n            \"rate\": 500,\n            \"discountPct\": 13\n        }\n    ],\n    \"subTotal\": 1102500,\n    \"taxAmount\": 606375,\n    \"invoiceAmount\": 1708875,\n    \"createdByUserName\": \"Mayank Gangrafe\",\n    \"createdOn\": \"2025-09-10T11:01:08.777\",\n    \"updatedByUserName\": \"\",\n    \"updatedOn\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "GetList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Invoice/GetList",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Invoice",
+								"GetList"
+							],
+							"query": [
+								{
+									"key": "IfromDate",
+									"value": "2025-09-01",
+									"disabled": true
+								},
+								{
+									"key": "toDate",
+									"value": "2025-10-01",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "fetch response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetList?InvoiceID=1&fromDate=2025-09-01&toDate=2025-10-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetList"
+									],
+									"query": [
+										{
+											"key": "InvoiceID",
+											"value": "1"
+										},
+										{
+											"key": "fromDate",
+											"value": "2025-09-01"
+										},
+										{
+											"key": "toDate",
+											"value": "2025-10-01"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 09:31:58 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"primaryKeyID\": 1,\n        \"invoiceID\": 1,\n        \"invoiceNo\": \"1\",\n        \"invoiceDate\": \"2025-09-10T00:00:00\",\n        \"customerName\": \"yash\",\n        \"subTotal\": 176,\n        \"taxPercentage\": 0,\n        \"taxAmount\": 0,\n        \"invoiceAmount\": 176,\n        \"createdByUserName\": \"Mayank Gangrade\",\n        \"createdOn\": \"2025-09-10T08:23:20.73\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    }\n]"
+						},
+						{
+							"name": "without dates",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetList?InvoiceID=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetList"
+									],
+									"query": [
+										{
+											"key": "InvoiceID",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 09:33:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"primaryKeyID\": 1,\n        \"invoiceID\": 1,\n        \"invoiceNo\": \"1\",\n        \"invoiceDate\": \"2025-09-10T00:00:00\",\n        \"customerName\": \"yash\",\n        \"subTotal\": 176,\n        \"taxPercentage\": 0,\n        \"taxAmount\": 0,\n        \"invoiceAmount\": 176,\n        \"createdByUserName\": \"Mayank Gangrade\",\n        \"createdOn\": \"2025-09-10T08:23:20.73\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    }\n]"
+						},
+						{
+							"name": "feth data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetList?fromDate=2025-09-01&toDate=2025-10-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetList"
+									],
+									"query": [
+										{
+											"key": "fromDate",
+											"value": "2025-09-01"
+										},
+										{
+											"key": "toDate",
+											"value": "2025-10-01"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 12:04:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"primaryKeyID\": 10,\n        \"invoiceID\": 10,\n        \"invoiceNo\": \"5\",\n        \"invoiceDate\": \"2025-09-10T00:00:00\",\n        \"customerName\": \"yash\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 55,\n        \"taxAmount\": 606375,\n        \"invoiceAmount\": 1708875,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:01:08.777\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 18,\n        \"invoiceID\": 18,\n        \"invoiceNo\": \"8\",\n        \"invoiceDate\": \"2025-09-10T00:00:00\",\n        \"customerName\": \"yash\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 99.99,\n        \"taxAmount\": 1102389.75,\n        \"invoiceAmount\": 2204889.75,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:04:36.21\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 20,\n        \"invoiceID\": 20,\n        \"invoiceNo\": \"9\",\n        \"invoiceDate\": \"2025-09-10T00:00:00\",\n        \"customerName\": \"yash\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 99.99,\n        \"taxAmount\": 1102389.75,\n        \"invoiceAmount\": 2204889.75,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:15:03.56\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 22,\n        \"invoiceID\": 22,\n        \"invoiceNo\": \"10\",\n        \"invoiceDate\": \"2025-09-10T00:00:00\",\n        \"customerName\": \"lokesh\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 44.21,\n        \"taxAmount\": 487415.25,\n        \"invoiceAmount\": 1589915.25,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:16:32.733\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 29,\n        \"invoiceID\": 29,\n        \"invoiceNo\": \"15\",\n        \"invoiceDate\": \"2025-06-10T00:00:00\",\n        \"customerName\": \"lokesh\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 44.21,\n        \"taxAmount\": 487415.25,\n        \"invoiceAmount\": 1589915.25,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:23:29.37\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 30,\n        \"invoiceID\": 30,\n        \"invoiceNo\": \"16\",\n        \"invoiceDate\": \"2025-06-10T00:00:00\",\n        \"customerName\": \"lokesh\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 44.21,\n        \"taxAmount\": 487415.25,\n        \"invoiceAmount\": 1589915.25,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:23:33.293\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 31,\n        \"invoiceID\": 31,\n        \"invoiceNo\": \"17\",\n        \"invoiceDate\": \"2025-06-10T00:00:00\",\n        \"customerName\": \"lokesh\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 44.21,\n        \"taxAmount\": 487415.25,\n        \"invoiceAmount\": 1589915.25,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:23:38.717\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 26,\n        \"invoiceID\": 26,\n        \"invoiceNo\": \"12\",\n        \"invoiceDate\": \"2025-02-10T00:00:00\",\n        \"customerName\": \"lokesh\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 44.21,\n        \"taxAmount\": 487415.25,\n        \"invoiceAmount\": 1589915.25,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:23:10.87\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 27,\n        \"invoiceID\": 27,\n        \"invoiceNo\": \"13\",\n        \"invoiceDate\": \"2025-02-10T00:00:00\",\n        \"customerName\": \"lokesh\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 44.21,\n        \"taxAmount\": 487415.25,\n        \"invoiceAmount\": 1589915.25,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:23:16.59\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 28,\n        \"invoiceID\": 28,\n        \"invoiceNo\": \"14\",\n        \"invoiceDate\": \"2025-02-10T00:00:00\",\n        \"customerName\": \"lokesh\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 44.21,\n        \"taxAmount\": 487415.25,\n        \"invoiceAmount\": 1589915.25,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:23:20.727\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    },\n    {\n        \"primaryKeyID\": 24,\n        \"invoiceID\": 24,\n        \"invoiceNo\": \"11\",\n        \"invoiceDate\": \"2024-09-10T00:00:00\",\n        \"customerName\": \"lokesh\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 44.21,\n        \"taxAmount\": 487415.25,\n        \"invoiceAmount\": 1589915.25,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:22:50.803\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    }\n]"
+						},
+						{
+							"name": "get buy invoice id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetList?InvoiceID=10&fromDate=2025-09-01&toDate=2025-10-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetList"
+									],
+									"query": [
+										{
+											"key": "InvoiceID",
+											"value": "10"
+										},
+										{
+											"key": "fromDate",
+											"value": "2025-09-01"
+										},
+										{
+											"key": "toDate",
+											"value": "2025-10-01"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 12:05:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"primaryKeyID\": 10,\n        \"invoiceID\": 10,\n        \"invoiceNo\": \"5\",\n        \"invoiceDate\": \"2025-09-10T00:00:00\",\n        \"customerName\": \"yash\",\n        \"subTotal\": 1102500,\n        \"taxPercentage\": 55,\n        \"taxAmount\": 606375,\n        \"invoiceAmount\": 1708875,\n        \"createdByUserName\": \"Mayank Gangrafe\",\n        \"createdOn\": \"2025-09-10T11:01:08.777\",\n        \"updatedByUserName\": \"\",\n        \"updatedOn\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"invoiceNo\": 3,\r\n  \"invoiceDate\": \"2025-09-10\",\r\n  \"customerName\": \"Jacob Bethell\",\r\n  \"address\": \"geeta nagar\",\r\n  \"city\": null,\r\n  \"taxPercentage\":10.00,\r\n  \"notes\": \"test sample\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 10,\r\n      \"description\": \"apple\",\r\n      \"quantity\": 10,\r\n      \"rate\": 100.00,\r\n      \"discountPct\": 10.00\r\n    },\r\n      {\r\n      \"rowNo\": 2,\r\n      \"itemID\": 2,\r\n      \"description\": \"orange\",\r\n      \"quantity\": 15,\r\n      \"rate\": 50,\r\n      \"discountPct\": 10.00\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Invoice/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Invoice",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Insert valid data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"invoiceNo\": 3,\r\n  \"invoiceDate\": \"2025-11-10T09:35:02.667Z\",\r\n  \"customerName\": \"yash\",\r\n  \"address\": \"geeta nagar\",\r\n  \"city\": \"indore\",\r\n  \"taxPercentage\": 55,\r\n  \"notes\": \"test sample\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 1,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1000,\r\n      \"rate\": 500,\r\n      \"discountPct\": 13\r\n    },\r\n      {\r\n      \"rowNo\": 2,\r\n      \"itemID\": 2,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1500,\r\n      \"rate\": 500,\r\n      \"discountPct\": 13\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 10:30:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Location",
+									"value": ""
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 5,\n    \"updatedOn\": null,\n    \"additionalResponseData\": {\n        \"SubTotal\": 1087500,\n        \"TaxAmount\": 598125,\n        \"InvoiceAmount\": 1685625\n    },\n    \"nofRecordsEffected\": 3\n}"
+						},
+						{
+							"name": "invalid item",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"invoiceNo\": 5,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"yash\",\r\n  \"address\": \"geeta nagar\",\r\n  \"city\": \"indore\",\r\n  \"taxPercentage\": 55,\r\n  \"notes\": \"test sample\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 3,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1000,\r\n      \"rate\": 500,\r\n      \"discountPct\": 13\r\n    },\r\n      {\r\n      \"rowNo\": 2,\r\n      \"itemID\": 1,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1500,\r\n      \"rate\": 500,\r\n      \"discountPct\": 13\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										""
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 10:59:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Selected item does not exists."
+						},
+						{
+							"name": "rate less than 0",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"invoiceNo\": 5,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"yash\",\r\n  \"address\": \"geeta nagar\",\r\n  \"city\": \"indore\",\r\n  \"taxPercentage\": 55,\r\n  \"notes\": \"test sample\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 3,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": -1000,\r\n      \"rate\": -500,\r\n      \"discountPct\": 13\r\n    },\r\n      {\r\n      \"rowNo\": 2,\r\n      \"itemID\": 1,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1500,\r\n      \"rate\": 500,\r\n      \"discountPct\": 13\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:00:00 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Rate should be greater than 0."
+						},
+						{
+							"name": "discount percentage les than 0",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"invoiceNo\": 6,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"yash\",\r\n  \"address\": \"geeta nagar\",\r\n  \"city\": \"indore\",\r\n  \"taxPercentage\": 55,\r\n  \"notes\": \"test sample\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 2,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1000,\r\n      \"rate\": 500,\r\n      \"discountPct\": -10\r\n    },\r\n      {\r\n      \"rowNo\": 2,\r\n      \"itemID\": 1,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1500,\r\n      \"rate\": 500,\r\n      \"discountPct\": 13\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:01:52 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Discount percentage should be between 0 to 100."
+						},
+						{
+							"name": "tax per less than 0",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"invoiceNo\": 6,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"yash\",\r\n  \"address\": \"geeta nagar\",\r\n  \"city\": \"indore\",\r\n  \"taxPercentage\": 101,\r\n  \"notes\": \"test sample\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 2,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1000,\r\n      \"rate\": 500,\r\n      \"discountPct\": 10\r\n    },\r\n      {\r\n      \"rowNo\": 2,\r\n      \"itemID\": 1,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1500,\r\n      \"rate\": 500,\r\n      \"discountPct\": 13\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										""
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:02:52 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Tax percentage should be between 0 to 100."
+						},
+						{
+							"name": "customername null",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"invoiceNo\": 9,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": null,\r\n  \"address\": \"geeta nagar\",\r\n  \"city\": \"indore\",\r\n  \"taxPercentage\": 99.99,\r\n  \"notes\": \"test sample\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 2,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1000,\r\n      \"rate\": 500,\r\n      \"discountPct\": 10\r\n    },\r\n      {\r\n      \"rowNo\": 2,\r\n      \"itemID\": 1,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1500,\r\n      \"rate\": 500,\r\n      \"discountPct\": 13\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:15:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n    \"title\": \"One or more validation errors occurred.\",\n    \"status\": 400,\n    \"errors\": {\n        \"CustomerName\": [\n            \"Customer Name is missing\"\n        ]\n    },\n    \"traceId\": \"00-26fe1eedd4905af742f88bc8f5d258e3-999c958d878a6cb4-00\"\n}"
+						},
+						{
+							"name": "cityname empty",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"invoiceNo\": 10,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"lokesh\",\r\n  \"address\": \"geeta nagar\",\r\n  \"city\": null,\r\n  \"taxPercentage\":44.21,\r\n  \"notes\": \"test sample\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 2,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1000,\r\n      \"rate\": 500,\r\n      \"discountPct\": 10\r\n    },\r\n      {\r\n      \"rowNo\": 2,\r\n      \"itemID\": 1,\r\n      \"description\": \"strinnothing\",\r\n      \"quantity\": 1500,\r\n      \"rate\": 500,\r\n      \"discountPct\": 13\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:16:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Location",
+									"value": ""
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 22,\n    \"updatedOn\": null,\n    \"additionalResponseData\": {\n        \"SubTotal\": 1102500,\n        \"TaxAmount\": 487415,\n        \"InvoiceAmount\": 1589915\n    },\n    \"nofRecordsEffected\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"updatedOn\": \"2025-09-11T11:13:38.153\",\r\n  \"invoiceID\": 1,\r\n  \"invoiceNo\": 1,\r\n  \"invoiceDate\": \"2025-09-10\",\r\n  \"customerName\": \"Jacob Bethell\",\r\n  \"address\": \"Bandra\",\r\n  \"city\": \"Mumbai\",\r\n  \"taxPercentage\": 20.00,\r\n  \"notes\": \"test\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 1,\r\n      \"description\": \"apple\",\r\n      \"quantity\": 20,\r\n      \"rate\": 100.00,\r\n      \"discountPct\": 10.00\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Invoice",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Invoice"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Invoice",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"updatedOn\": null,\r\n  \"invoiceID\": 1,\r\n  \"invoiceNo\": 12,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"string\",\r\n  \"address\": \"string\",\r\n  \"city\": \"string\",\r\n  \"taxPercentage\": 0,\r\n  \"notes\": \"string\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 1,\r\n      \"description\": \"string\",\r\n      \"quantity\": 100,\r\n      \"rate\": 200,\r\n      \"discountPct\": 5\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 09:38:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 1,\n    \"updatedOn\": \"1900-01-02T00:00:00\",\n    \"additionalResponseData\": {\n        \"SubTotal\": 19000,\n        \"TaxAmount\": 0,\n        \"InvoiceAmount\": 19000\n    },\n    \"nofRecordsEffected\": 3\n}"
+						},
+						{
+							"name": "update record with valid updatedOn",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"updatedOn\": \"2025-09-10T09:40:57.493Z\",\r\n  \"invoiceID\": 1,\r\n  \"invoiceNo\": 12,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"string\",\r\n  \"address\": \"string\",\r\n  \"city\": \"string\",\r\n  \"taxPercentage\": 0,\r\n  \"notes\": \"string\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 1,\r\n      \"description\": \"string\",\r\n      \"quantity\": 100,\r\n      \"rate\": 200,\r\n      \"discountPct\": 5\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 09:44:09 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"primaryKeyID\": 1,\n    \"updatedOn\": \"2025-09-10T09:44:09.967\",\n    \"additionalResponseData\": {\n        \"SubTotal\": 19000,\n        \"TaxAmount\": 0,\n        \"InvoiceAmount\": 19000\n    },\n    \"nofRecordsEffected\": 3\n}"
+						},
+						{
+							"name": "ncurrency check",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"updatedOn\": \"2025-09-10T09:40:57.493Z\",\r\n  \"invoiceID\": 1,\r\n  \"invoiceNo\": 12,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"string\",\r\n  \"address\": \"string\",\r\n  \"city\": \"string\",\r\n  \"taxPercentage\": 0,\r\n  \"notes\": \"string\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 1,\r\n      \"description\": \"string\",\r\n      \"quantity\": 100,\r\n      \"rate\": 200,\r\n      \"discountPct\": 5\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 09:44:51 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Record already modified by another user."
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"updatedOn\": \"2025-09-10T09:40:57.493Z\",\r\n  \"invoiceID\": 1,\r\n  \"invoiceNo\": 12,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"string\",\r\n  \"address\": \"string\",\r\n  \"city\": \"string\",\r\n  \"taxPercentage\": 0,\r\n  \"notes\": \"string\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 1,\r\n      \"description\": \"string\",\r\n      \"quantity\": 100,\r\n      \"rate\": 200,\r\n      \"discountPct\": 5\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Invoice/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Invoice",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"updatedOn\": \"2025-09-10T09:40:57.493Z\",\r\n  \"invoiceID\": 1,\r\n  \"invoiceNo\": 12,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"string\",\r\n  \"address\": \"string\",\r\n  \"city\": \"string\",\r\n  \"taxPercentage\": 0,\r\n  \"notes\": \"string\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 1,\r\n      \"description\": \"string\",\r\n      \"quantity\": 100,\r\n      \"rate\": 200,\r\n      \"discountPct\": 5\r\n    }\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 09:46:54 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "record not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"updatedOn\": \"2025-09-10T09:40:57.493Z\",\r\n  \"invoiceID\": 1,\r\n  \"invoiceNo\": 12,\r\n  \"invoiceDate\": \"2025-09-10T09:35:02.667Z\",\r\n  \"customerName\": \"string\",\r\n  \"address\": \"string\",\r\n  \"city\": \"string\",\r\n  \"taxPercentage\": 0,\r\n  \"notes\": \"string\",\r\n  \"lines\": [\r\n    {\r\n      \"rowNo\": 1,\r\n      \"itemID\": 1,\r\n      \"description\": \"string\",\r\n      \"quantity\": 100,\r\n      \"rate\": 200,\r\n      \"discountPct\": 5\r\n    }\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 09:51:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Record not found."
+						}
+					]
+				},
+				{
+					"name": "TopItems",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Invoice/TopItems?topN=2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Invoice",
+								"TopItems"
+							],
+							"query": [
+								{
+									"key": "topN",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "fetch data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/TopItems?fromDate=2025-09-01&toDate=2025-10-01&topN=5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"TopItems"
+									],
+									"query": [
+										{
+											"key": "fromDate",
+											"value": "2025-09-01"
+										},
+										{
+											"key": "toDate",
+											"value": "2025-10-01"
+										},
+										{
+											"key": "topN",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 10:14:28 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"itemID\": 1,\n        \"itemName\": \"burger\",\n        \"amountSum\": 176\n    },\n    {\n        \"itemID\": 0,\n        \"itemName\": \"Others\",\n        \"amountSum\": 0\n    }\n]"
+						},
+						{
+							"name": "TopItems filter 1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/TopItems?fromDate=2025-08-01&toDate=2025-10-01&topN=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"TopItems"
+									],
+									"query": [
+										{
+											"key": "fromDate",
+											"value": "2025-08-01"
+										},
+										{
+											"key": "toDate",
+											"value": "2025-10-01"
+										},
+										{
+											"key": "topN",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:32:00 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"itemID\": 1,\n        \"itemName\": \"hair gel\",\n        \"amountSum\": 2610000\n    },\n    {\n        \"itemID\": 0,\n        \"itemName\": \"Others\",\n        \"amountSum\": 1800000\n    }\n]"
+						},
+						{
+							"name": "values change as per time",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/TopItems?fromDate=2024-08-01&toDate=2025-10-01&topN=5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"TopItems"
+									],
+									"query": [
+										{
+											"key": "fromDate",
+											"value": "2024-08-01"
+										},
+										{
+											"key": "toDate",
+											"value": "2025-10-01"
+										},
+										{
+											"key": "topN",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:32:58 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"itemID\": 1,\n        \"itemName\": \"hair gel\",\n        \"amountSum\": 7177500\n    },\n    {\n        \"itemID\": 2,\n        \"itemName\": \"hair oil\",\n        \"amountSum\": 4950000\n    },\n    {\n        \"itemID\": 0,\n        \"itemName\": \"Others\",\n        \"amountSum\": 0\n    }\n]"
+						},
+						{
+							"name": "only top record",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/TopItems?topN=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"TopItems"
+									],
+									"query": [
+										{
+											"key": "topN",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 12:00:57 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"itemID\": 1,\n        \"itemName\": \"hair gel\",\n        \"amountSum\": 7177500\n    },\n    {\n        \"itemID\": 0,\n        \"itemName\": \"Others\",\n        \"amountSum\": 4950000\n    }\n]"
+						},
+						{
+							"name": "top value 0",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/TopItems?topN=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"TopItems"
+									],
+									"query": [
+										{
+											"key": "topN",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 12:03:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"itemID\": 0,\n        \"itemName\": \"Others\",\n        \"amountSum\": 12127500\n    }\n]"
+						},
+						{
+							"name": "TopN is null default 5",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/TopItems",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"TopItems"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 12:13:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"itemID\": 1,\n        \"itemName\": \"hair gel\",\n        \"amountSum\": 7177500\n    },\n    {\n        \"itemID\": 2,\n        \"itemName\": \"hair oil\",\n        \"amountSum\": 4950000\n    },\n    {\n        \"itemID\": 0,\n        \"itemName\": \"Others\",\n        \"amountSum\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GetMertices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Invoice/GetMetrices",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Invoice",
+								"GetMetrices"
+							],
+							"query": [
+								{
+									"key": "fromDate",
+									"value": "2025-09-01",
+									"disabled": true
+								},
+								{
+									"key": "toDate",
+									"value": "2025-10-01",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "fetch data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetMetrices?fromDate=2025-09-01&toDate=2025-10-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetMetrices"
+									],
+									"query": [
+										{
+											"key": "fromDate",
+											"value": "2025-09-01"
+										},
+										{
+											"key": "toDate",
+											"value": "2025-10-01"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 10:20:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"invoiceCount\": 1,\n        \"totalAmount\": 193.6\n    }\n]"
+						},
+						{
+							"name": "record of 13 months",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetMetrices?fromDate=2024-09-01&toDate=2025-10-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetMetrices"
+									],
+									"query": [
+										{
+											"key": "fromDate",
+											"value": "2024-09-01"
+										},
+										{
+											"key": "toDate",
+											"value": "2025-10-01"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:27:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"invoiceCount\": 11,\n        \"totalAmount\": 18837976.5\n    }\n]"
+						},
+						{
+							"name": "record of only 1 month",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetMetrices?fromDate=2025-09-01&toDate=2025-10-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetMetrices"
+									],
+									"query": [
+										{
+											"key": "fromDate",
+											"value": "2025-09-01"
+										},
+										{
+											"key": "toDate",
+											"value": "2025-10-01"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:27:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"invoiceCount\": 4,\n        \"totalAmount\": 7708569.75\n    }\n]"
+						},
+						{
+							"name": "without dates",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetMetrices",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetMetrices"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:59:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"invoiceCount\": 11,\n        \"totalAmount\": 18837976.5\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GetTrend12m",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Invoice/GetTrend12m?asOf=2025-07-01",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Invoice",
+								"GetTrend12m"
+							],
+							"query": [
+								{
+									"key": "asOf",
+									"value": "2025-07-01"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "fetch last 12m trend",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetTrend12m?asOf=2025-12-30",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetTrend12m"
+									],
+									"query": [
+										{
+											"key": "asOf",
+											"value": "2025-12-30"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 10:25:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"monthStart\": \"2025-01-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-02-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-03-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-04-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-05-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-06-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-07-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-08-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-09-01T00:00:00\",\n        \"invoiceCount\": 1,\n        \"amountSum\": 193.6\n    },\n    {\n        \"monthStart\": \"2025-10-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-11-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-12-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    }\n]"
+						},
+						{
+							"name": "record of 12 months from date",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetTrend12m?asOf=2025-08-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetTrend12m"
+									],
+									"query": [
+										{
+											"key": "asOf",
+											"value": "2025-08-01"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:24:55 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"monthStart\": \"2024-09-01T00:00:00\",\n        \"invoiceCount\": 1,\n        \"amountSum\": 1589915.25\n    },\n    {\n        \"monthStart\": \"2024-10-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2024-11-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2024-12-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-01-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-02-01T00:00:00\",\n        \"invoiceCount\": 3,\n        \"amountSum\": 4769745.75\n    },\n    {\n        \"monthStart\": \"2025-03-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-04-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-05-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-06-01T00:00:00\",\n        \"invoiceCount\": 3,\n        \"amountSum\": 4769745.75\n    },\n    {\n        \"monthStart\": \"2025-07-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-08-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    }\n]"
+						},
+						{
+							"name": "here after one month increased it just shift to next month of last yaer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetTrend12m?asOf=2025-09-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetTrend12m"
+									],
+									"query": [
+										{
+											"key": "asOf",
+											"value": "2025-09-01"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 11:26:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"monthStart\": \"2024-10-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2024-11-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2024-12-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-01-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-02-01T00:00:00\",\n        \"invoiceCount\": 3,\n        \"amountSum\": 4769745.75\n    },\n    {\n        \"monthStart\": \"2025-03-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-04-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-05-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-06-01T00:00:00\",\n        \"invoiceCount\": 3,\n        \"amountSum\": 4769745.75\n    },\n    {\n        \"monthStart\": \"2025-07-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-08-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-09-01T00:00:00\",\n        \"invoiceCount\": 4,\n        \"amountSum\": 7708569.75\n    }\n]"
+						},
+						{
+							"name": "without AsOf value",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Invoice/GetTrend12m",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Invoice",
+										"GetTrend12m"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Sep 2025 12:11:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"monthStart\": \"2024-10-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2024-11-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2024-12-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-01-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-02-01T00:00:00\",\n        \"invoiceCount\": 3,\n        \"amountSum\": 4769745.75\n    },\n    {\n        \"monthStart\": \"2025-03-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-04-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-05-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-06-01T00:00:00\",\n        \"invoiceCount\": 3,\n        \"amountSum\": 4769745.75\n    },\n    {\n        \"monthStart\": \"2025-07-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-08-01T00:00:00\",\n        \"invoiceCount\": 0,\n        \"amountSum\": 0\n    },\n    {\n        \"monthStart\": \"2025-09-01T00:00:00\",\n        \"invoiceCount\": 4,\n        \"amountSum\": 7708569.75\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": ""
+		},
+		{
+			"key": "BearerToken",
+			"value": ""
+		}
+	]
+}

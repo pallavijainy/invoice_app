@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { invoiceService, type Invoice } from "@/services/invoiceService";
 
-const InvoicePrintPage = () => {
+function InvoicePrintContent() {
   const searchParams = useSearchParams();
   const invoiceID = searchParams.get("id");
   const [invoice, setInvoice] = useState<Invoice | null>(null);
@@ -53,7 +53,7 @@ const InvoicePrintPage = () => {
     );
   }
 
-  const calculateLineAmount = (qty: number, rate: number, disc: number) => {
+  const calculateLineAmount = (qty: number = 0, rate: number = 0, disc: number = 0) => {
     const subtotal = qty * rate;
     const discount = subtotal * (disc / 100);
     return subtotal - discount;
@@ -61,7 +61,6 @@ const InvoicePrintPage = () => {
 
   return (
     <div className="min-h-screen bg-white p-8 print:p-0">
-      {/* Print Styles */}
       <style>{`
         @media print {
           body {
@@ -77,7 +76,6 @@ const InvoicePrintPage = () => {
         }
       `}</style>
 
-      {/* Print Button */}
       <div className="no-print mb-6 flex gap-2">
         <button
           onClick={() => window.print()}
@@ -93,9 +91,7 @@ const InvoicePrintPage = () => {
         </button>
       </div>
 
-      {/* Invoice Container */}
       <div className="print-container max-w-4xl mx-auto bg-white border border-gray-200 rounded-lg p-12">
-        {/* Header */}
         <div className="flex justify-between items-start mb-12 pb-8 border-b border-gray-200">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">INVOICE</h1>
@@ -114,9 +110,7 @@ const InvoicePrintPage = () => {
           </div>
         </div>
 
-        {/* Company & Customer Info */}
         <div className="grid grid-cols-2 gap-8 mb-12">
-          {/* Company Info */}
           <div>
             <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">
               From
@@ -126,7 +120,6 @@ const InvoicePrintPage = () => {
             <p className="text-sm text-gray-600">City, Country</p>
           </div>
 
-          {/* Customer Info */}
           <div>
             <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">
               Bill To
@@ -143,7 +136,6 @@ const InvoicePrintPage = () => {
           </div>
         </div>
 
-        {/* Line Items */}
         <div className="mb-8">
           <table className="w-full">
             <thead>
@@ -169,23 +161,23 @@ const InvoicePrintPage = () => {
               {invoice.lines.map((line, index) => (
                 <tr key={index} className="border-b border-gray-200">
                   <td className="px-4 py-3 text-sm text-gray-900">
-                    <p className="font-medium">{line.desc}</p>
+                    <p className="font-medium">{line.description}</p>
                   </td>
                   <td className="px-4 py-3 text-right text-sm text-gray-600">
-                    {line.qty.toFixed(2)}
+                    {(line.quantity || 0).toFixed(2)}
                   </td>
                   <td className="px-4 py-3 text-right text-sm text-gray-600">
                     ${line.rate.toFixed(2)}
                   </td>
                   <td className="px-4 py-3 text-right text-sm text-gray-600">
-                    {line.disc.toFixed(2)}%
+                    {(line.discountPct || 0).toFixed(2)}%
                   </td>
                   <td className="px-4 py-3 text-right text-sm font-medium text-gray-900">
                     $
                     {calculateLineAmount(
-                      line.qty,
+                      line.quantity || 0,
                       line.rate,
-                      line.disc
+                      line.discountPct || 0
                     ).toFixed(2)}
                   </td>
                 </tr>
@@ -194,7 +186,6 @@ const InvoicePrintPage = () => {
           </table>
         </div>
 
-        {/* Totals */}
         <div className="flex justify-end mb-8">
           <div className="w-full max-w-sm">
             <div className="flex justify-between py-2 border-t border-gray-300">
@@ -207,16 +198,14 @@ const InvoicePrintPage = () => {
             </div>
 
             {invoice.taxPercentage > 0 && (
-              <>
-                <div className="flex justify-between py-2">
-                  <span className="text-sm text-gray-600">
-                    Tax ({invoice.taxPercentage.toFixed(2)}%):
-                  </span>
-                  <span className="text-sm text-gray-600">
-                    ${invoice.taxAmount.toFixed(2)}
-                  </span>
-                </div>
-              </>
+              <div className="flex justify-between py-2">
+                <span className="text-sm text-gray-600">
+                  Tax ({invoice.taxPercentage.toFixed(2)}%):
+                </span>
+                <span className="text-sm text-gray-600">
+                  ${invoice.taxAmount.toFixed(2)}
+                </span>
+              </div>
             )}
 
             <div className="flex justify-between py-3 border-t border-gray-300 border-b border-gray-300">
@@ -230,7 +219,6 @@ const InvoicePrintPage = () => {
           </div>
         </div>
 
-        {/* Notes */}
         {invoice.notes && (
           <div className="mb-8 pt-8 border-t border-gray-200">
             <h4 className="text-sm font-semibold text-gray-900 mb-2">Notes</h4>
@@ -238,13 +226,20 @@ const InvoicePrintPage = () => {
           </div>
         )}
 
-        {/* Footer */}
         <div className="pt-8 border-t border-gray-200 text-center text-xs text-gray-500">
           <p>Thank you for your business</p>
           <p className="mt-2">© 2025 InvoiceApp. All rights reserved.</p>
         </div>
       </div>
     </div>
+  );
+}
+
+const InvoicePrintPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <InvoicePrintContent />
+    </Suspense>
   );
 };
 

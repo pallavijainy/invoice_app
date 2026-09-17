@@ -1,9 +1,10 @@
 import { z } from "zod";
 
 export const invoiceLineSchema = z.object({
+  rowNo: z.number().optional(),
   itemID: z.number().min(1, "Item is required"),
-  desc: z.string().trim().max(500, "Description cannot exceed 500 characters"),
-  qty: z.number().min(0, "Quantity must be greater than or equal to 0"),
+  description: z.string().trim().min(1, "Description is required").max(500, "Description cannot exceed 500 characters"),
+  quantity: z.number().min(1, "Quantity must be greater than 0"),
   rate: z
     .number()
     .min(0, "Rate must be greater than or equal to 0")
@@ -11,18 +12,17 @@ export const invoiceLineSchema = z.object({
       (val) => Number(val.toFixed(2)) === val,
       "Rate can have a maximum of 2 decimal places"
     ),
-  disc: z
+  discountPct: z
     .number()
     .min(0, "Discount must be greater than or equal to 0")
-    .max(100, "Discount cannot exceed 100"),
+    .max(100, "Discount cannot exceed 100")
+    .default(0),
 });
 
 export const invoiceEditorSchema = z.object({
   invoiceNo: z
-    .string()
-    .trim()
-    .min(1, "Invoice number is required")
-    .max(50, "Invoice number cannot exceed 50 characters"),
+    .number()
+    .min(1, "Invoice number is required"),
 
   invoiceDate: z
     .string()
@@ -56,7 +56,7 @@ export const invoiceEditorSchema = z.object({
     .array(invoiceLineSchema)
     .min(1, "Invoice must have at least one line")
     .refine(
-      (lines) => lines.some((line) => line.qty > 0),
+      (lines) => lines.some((line) => (line.quantity || 0) > 0),
       "Invoice must have at least one line with quantity > 0"
     ),
 
